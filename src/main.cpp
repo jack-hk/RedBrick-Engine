@@ -1,5 +1,7 @@
-#include <iostream>
 #include "Game.h"
+#include "GameObject.h"
+#include "Level.h"
+
 
 // This project uses C++17!
 
@@ -7,9 +9,12 @@ void Run()
 {
 	SDL_Event _sdlEvent;
 
+	Level level;
+	GameObject go1(Vector2D(80, 100), 80);
+	level.AddGameObject(&go1);
+
 	while (Game::_isRunning)
 	{
-
 		while (SDL_PollEvent(&_sdlEvent))
 		{
 			switch (_sdlEvent.type)
@@ -19,10 +24,13 @@ void Run()
 				break;
 			}
 		}
+
 		SDL_RenderClear(Graphics::_renderer);
+		Game::UpdateLevels();
 		//Graphics here!
 		SDL_RenderPresent(Graphics::_renderer);
 	}
+	std::cout << "Game is shutting down..." << std::endl;
 }
 
 int main(int argc, char* args[])

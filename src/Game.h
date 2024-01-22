@@ -14,4 +14,6 @@ public:
 
 	static void Init();
 	static void Quit();
+
+	static void UpdateLevels();
 };
