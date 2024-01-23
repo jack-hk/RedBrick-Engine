@@ -3,14 +3,17 @@
 #include "Level.h"
 
 
-// This project uses C++17!
+// This project uses C++20!
 
 void Run()
 {
 	SDL_Event _sdlEvent;
 
+	SDL_Texture* placeholder = Graphics::LoadTexture("img/plain_metal.png");
+
 	Level level;
-	GameObject go1(Vector2D(80, 100), 80);
+	GameObject go1(Vector2D(150, 100), 150);
+	go1.AddComponent(new Sprite(&go1, placeholder));
 	level.AddGameObject(&go1);
 
 	while (Game::_isRunning)
