@@ -10,6 +10,7 @@ public:
 	static inline Graphics _graphics;
 	static inline bool _isRunning;
 	static inline bool _isDebugMode = true;
+	static inline bool _isANewScene = true;
 	static inline std::vector<Scene*> _scenes;
 	static inline Scene* _currentScene;
 

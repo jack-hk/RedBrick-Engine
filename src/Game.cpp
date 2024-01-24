@@ -20,6 +20,11 @@ void Game::UpdateLevels()
 {
 	for (auto scene : _scenes)
 	{
-		scene->Update();
+		if (_isANewScene)
+		{
+			_currentScene->OnLoaded();
+			_isANewScene = false;
+		}
+		_currentScene->Update();
 	}
 }

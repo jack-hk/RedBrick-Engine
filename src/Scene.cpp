@@ -1,8 +1,8 @@
 #include "Scene.h"
 
-Scene::Scene()
+void Scene::OnLoaded()
 {
-	Game::_scenes.push_back(this);
+	std::cout << "RedBrick: Scene Loaded '" <<_sceneName << "'" << std::endl;
 }
 
 void Scene::Update()
@@ -18,7 +18,13 @@ void Scene::AddGameObject(GameObject* gameObjectToAdd)
 	_gameObjects.push_back(gameObjectToAdd);
 }
 
-void Scene::OnLoaded()
+void Scene::Create()
 {
-	//when game.h says its loaded.
+	Game::_scenes.push_back(this);
+
+	//debug: currently changes the level to the newest created instance.
+	Game::_currentScene = this;
+	Game::_isANewScene = true;
 }
+
+

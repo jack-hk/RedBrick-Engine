@@ -6,9 +6,9 @@
 class Menu : public Scene
 {
 public:
-	UIElement* _selectedUI;
-
+	Menu(const char* sceneName);
 	void Update() override;
+
 private:
 	std::vector<UIElement*> _UIElements;
 };

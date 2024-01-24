@@ -4,15 +4,17 @@
 #include "Game.h"
 #include "GameObject.h"
 
+// Note: Make this so it can't make direct instances.
 class Scene
 {
 public:
-	Scene();
+	void OnLoaded();
 	virtual void Update() = 0;
 	void AddGameObject(GameObject* gameObject);
 
-	void OnLoaded();
-
 protected:
+	void Create();
+
+	const char* _sceneName = "Untitled";
 	std::vector<GameObject*> _gameObjects;
 };

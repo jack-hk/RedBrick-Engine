@@ -1,7 +1,10 @@
 #include "Menu.h"
 
-//de
-#include <iostream>
+Menu::Menu(const char* sceneName)
+{
+	Create();
+	_sceneName = sceneName;
+}
 
 void Menu::Update()
 {
@@ -12,8 +15,6 @@ void Menu::Update()
 		if (_gameObjects[i]->GetComponent<UIElement>() != nullptr)
 		{
 			_UIElements.push_back(_gameObjects[i]->GetComponent<UIElement>());
-			
 		}
-		std::cout << _UIElements.size() << std::endl;
 	}
 }

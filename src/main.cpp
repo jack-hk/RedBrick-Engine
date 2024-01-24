@@ -11,11 +11,10 @@ void Run()
 
 	SDL_Texture* placeholder = Graphics::LoadTexture("img/plain_metal.png");
 
-	Menu level;
+	Menu mainMenu("MainMenu");
 	GameObject go1(Vector2D(150, 100), 150);
 	go1.AddComponent(new Sprite(&go1, placeholder));
-	go1.AddComponent(new UIElement(&go1));
-	level.AddGameObject(&go1);
+	mainMenu.AddGameObject(&go1);
 
 	while (Game::_isRunning)
 	{
