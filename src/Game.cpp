@@ -1,5 +1,5 @@
 #include "Game.h"
-#include "Level.h"
+#include "Scene.h"
 
 void Game::Init()
 {
@@ -18,8 +18,8 @@ void Game::Quit()
 
 void Game::UpdateLevels()
 {
-	for (auto level : _levels)
+	for (auto scene : _scenes)
 	{
-		level->Update();
+		scene->Update();
 	}
 }

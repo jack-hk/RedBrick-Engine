@@ -1,7 +1,7 @@
 #include "Game.h"
 #include "GameObject.h"
 #include "Level.h"
-
+#include "Menu.h"
 
 // This project uses C++20!
 
@@ -11,9 +11,10 @@ void Run()
 
 	SDL_Texture* placeholder = Graphics::LoadTexture("img/plain_metal.png");
 
-	Level level;
+	Menu level;
 	GameObject go1(Vector2D(150, 100), 150);
 	go1.AddComponent(new Sprite(&go1, placeholder));
+	go1.AddComponent(new UIElement(&go1));
 	level.AddGameObject(&go1);
 
 	while (Game::_isRunning)

@@ -1,0 +1,15 @@
+#pragma once
+#include "Scene.h"
+#include "UIElement.h"
+
+// A menu is where UI navigation happens.
+class Menu : public Scene
+{
+public:
+	UIElement* _selectedUI;
+
+	void Update() override;
+private:
+	std::vector<UIElement*> _UIElements;
+};
+

@@ -1,16 +1,9 @@
 #pragma once
-#include <vector>
+#include "Scene.h"
 
-#include "Game.h"
-#include "GameObject.h"
-
-class Level
+// A level is where gameplay happens.
+class Level : public Scene
 {
 public:
-	Level();
-	void Update();
-	void AddGameObject(GameObject* gameObject);
-
-private:
-	std::vector<GameObject*> _gameObjects;
+	void Update() override;
 };
