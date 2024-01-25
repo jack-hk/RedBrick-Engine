@@ -23,6 +23,7 @@
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\Graphics.cpp" />
+    <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\Level.cpp" />
     <ClCompile Include="src\Scene.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -36,6 +37,7 @@
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\GameObject.h" />
     <ClInclude Include="src\Graphics.h" />
+    <ClInclude Include="src\Input.h" />
     <ClInclude Include="src\Level.h" />
     <ClInclude Include="src\Scene.h" />
     <ClInclude Include="src\Math.h" />
