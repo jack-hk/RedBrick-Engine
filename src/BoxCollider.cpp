@@ -1,38 +1,66 @@
 #include "BoxCollider.h"
 
+BoxCollider::BoxCollider(Collision& subject, GameObject* gameObject, Vector2D offset) : _subject(subject), Component(gameObject)
+{
+	_body = SDL_Rect{
+		(int)_gameObject->GetPosition().x + (int)offset.x,
+		(int)_gameObject->GetPosition().y + (int)offset.y,
+		(int)_gameObject->GetSize(),
+		(int)_gameObject->GetSize()
+	};
+	_colliderSize.x = _body.w;
+	_colliderSize.y = _body.h;
+	_colliderOffset = offset;
+
+	this->_subject.Attach(this);
+	this->_number = BoxCollider::static_number_;
+	if (Game::_isDebugMode) { std::cout << "Hi, I'm the Observer \"" << ++BoxCollider::static_number_ << "\".\n"; }
+}
+
+BoxCollider::BoxCollider(Collision& subject, GameObject* gameObject, Vector2D newSize, Vector2D offset) : _subject(subject), Component(gameObject)
+{
+	_body = SDL_Rect{
+		(int)_gameObject->GetPosition().x + (int)offset.x,
+		(int)_gameObject->GetPosition().y + (int)offset.y,
+		(int)newSize.x,
+		(int)newSize.y
+	};
+	_colliderSize = newSize;
+	_colliderOffset = offset;
+
+	this->_subject.Attach(this);
+	this->_number = BoxCollider::static_number_;
+	if (Game::_isDebugMode) { std::cout << "Hi, I'm the Observer \"" << ++BoxCollider::static_number_ << "\".\n"; }
+}
+
 BoxCollider::~BoxCollider()
 {
-    std::cout << "Goodbye, I was the Subject.\n";
+	std::cout << "Goodbye, I was the Subject.\n";
 }
 
-void BoxCollider::Attach(IObserver* observer)
+void BoxCollider::Update()
 {
-    list_observer_.push_back(observer);
+	_body = SDL_Rect{
+	(int)_gameObject->GetPosition().x + (int)_colliderOffset.x,
+	(int)_gameObject->GetPosition().y + (int)_colliderOffset.y,
+	(int)_colliderSize.x,
+	(int)_colliderSize.y
+	};
 }
 
-void BoxCollider::Detach(IObserver* observer)
+void BoxCollider::OnNotify(const std::string& message_from_subject)
 {
-    list_observer_.remove(observer);
+	_messageFromSubject = message_from_subject;
+	PrintInfo();
 }
 
-void BoxCollider::Notify()
+void BoxCollider::RemoveMeFromTheList()
 {
-    std::list<IObserver*>::iterator iterator = list_observer_.begin();
-    HowManyObserver();
-    while (iterator != list_observer_.end())
-    {
-        (*iterator)->Update(message_);
-        ++iterator;
-    }
+	_subject.Detach(this);
+	std::cout << "Observer \"" << _number << "\" removed from the list.\n";
 }
 
-void BoxCollider::CreateMessage(std::string message)
+void BoxCollider::PrintInfo()
 {
-    this->message_ = message;
-    Notify();
-}
-
-void BoxCollider::HowManyObserver()
-{
-    std::cout << "There are " << list_observer_.size() << " observers in the list.\n";
+	std::cout << "Observer \"" << this->_number << "\": a new message is available --> " << this->_messageFromSubject << "\n";
 }

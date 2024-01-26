@@ -10,8 +10,10 @@ class Sprite : public Component
 public:
 	Sprite(GameObject* gameObject, SDL_Texture* texture);
 	Sprite(GameObject* gameObject, SDL_Texture* texture, Vector2D newSize, Vector2D offset = Vector2D(0, 0));
+	virtual ~Sprite();
 
 	void Update() override;
+	void OnNotify(const std::string& message_from_subject) override;
 
 	inline void SetRendered(bool isRendered) { _isRendered = isRendered; }
 private:

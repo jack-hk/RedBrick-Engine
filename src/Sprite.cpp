@@ -26,13 +26,22 @@ Sprite::Sprite(GameObject* gameObject, SDL_Texture* texture, Vector2D newSize, V
 	_spriteOffset = offset;
 }
 
+Sprite::~Sprite()
+{
+}
+
+void Sprite::OnNotify(const std::string& message_from_subject)
+{
+
+}
+
 void Sprite::Update()
 {
 	_body = SDL_Rect{
-			(int)_gameObject->GetPosition().x + (int)_spriteOffset.x,
-			(int)_gameObject->GetPosition().y + (int)_spriteOffset.y,
-			(int)_spriteSize.x,
-			(int)_spriteSize.y
+		(int)_gameObject->GetPosition().x + (int)_spriteOffset.x,
+		(int)_gameObject->GetPosition().y + (int)_spriteOffset.y,
+		(int)_spriteSize.x,
+		(int)_spriteSize.y
 	};
 	if (_isRendered) Graphics::DrawTexture(_body, _texture);
 }

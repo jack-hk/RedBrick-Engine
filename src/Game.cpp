@@ -25,8 +25,7 @@ void Game::Init()
 	std::cout << "SDL" << ": Sucessfully initialised" << std::endl;
 }
 
-//Debug
-int Collision::static_number_ = 0;
+int BoxCollider::static_number_ = 0;
 
 void Game::Run()
 {
@@ -34,17 +33,17 @@ void Game::Run()
 
 	SDL_Texture* placeholder = Graphics::LoadTexture("img/plain_metal.png");
 
-	//Debug
-	BoxCollider* subject = new BoxCollider;
-	Collision* observer1 = new Collision(*subject);
+	Level mainMenu("MainMenu");
 
-	delete subject;
-	//
-
-	Menu mainMenu("MainMenu");
 	GameObject go1(Vector2D(150, 100), 150);
-	go1.AddComponent(new Sprite(&go1, placeholder));
+	Collision* subject = new Collision;
+	BoxCollider* observer1 = new BoxCollider(*subject, &go1);
+	//Sprite* observer2 = new Sprite(*subject, &go1, placeholder);
+	go1.AddComponent(observer1);
+	//go1.AddComponent(observer2);
 	mainMenu.AddGameObject(&go1);
+
+	subject->CreateMessage("Hello World! :D");
 
 	while (Game::_isRunning)
 	{

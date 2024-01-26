@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\BoxCollider.cpp" />
+    <ClCompile Include="src\Collision.cpp" />
     <ClCompile Include="src\Component.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\GameObject.cpp" />

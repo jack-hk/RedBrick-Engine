@@ -1,14 +1,14 @@
 #pragma once
 
+#include "IObserver.h"
+
 class GameObject;
-class Component
+class Component : public IObserver
 {
 public:
 	GameObject* _gameObject;
 
 	Component(GameObject* gameObject);
-
-	virtual void Update() = 0;
 
 private:
 	bool _isEnabled = true;

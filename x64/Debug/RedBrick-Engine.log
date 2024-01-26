@@ -1,2 +1,11 @@
-﻿  Game.cpp
+﻿  BoxCollider.cpp
+  Collision.cpp
+  Component.cpp
+  Game.cpp
+  GameObject.cpp
+  Level.cpp
+  Scene.cpp
+  Sprite.cpp
+  main.cpp
+  Generating Code...
   RedBrick-Engine.vcxproj -> C:\Users\jackh\Projects\Other\RedBrick-Engine\x64\Debug\RedBrick-Engine.exe

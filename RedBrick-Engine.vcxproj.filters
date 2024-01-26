@@ -69,6 +69,12 @@
     <ClCompile Include="src\Input.cpp">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="src\BoxCollider.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Collision.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game.h">
@@ -108,6 +114,12 @@
       <Filter>Header Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="src\ISubject.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BoxCollider.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Collision.h">
       <Filter>Header Files\Engine</Filter>
     </ClInclude>
   </ItemGroup>
