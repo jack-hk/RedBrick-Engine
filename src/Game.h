@@ -5,6 +5,9 @@
 #include "GameObject.h"
 #include "Graphics.h"
 #include "Input.h"
+#include "Collision.h"
+
+#include "BoxCollider.h"
 
 class Scene;
 class Level;

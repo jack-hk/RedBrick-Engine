@@ -397,3 +397,11 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 .vs/RedBrick-Engine/v17/Browse.VC.db
+*.db
+.vs/RedBrick-Engine/v17/.suo
+*.tlog
+*.log
+*.ilk
+*.exe
+*.tlog
+*.pdb
