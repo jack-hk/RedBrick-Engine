@@ -8,13 +8,13 @@
 class Scene
 {
 public:
-	void OnLoaded();
+	virtual ~Scene() {};
 	virtual void Update() = 0;
 	void AddGameObject(GameObject* gameObject);
 
-protected:
-	void Create();
+	const char* GetName() { return _sceneName; }
 
+protected:
 	const char* _sceneName = "Untitled";
 	std::vector<GameObject*> _gameObjects;
 };

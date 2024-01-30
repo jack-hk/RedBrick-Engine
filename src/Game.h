@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <memory>
 
 #include "Game.h"
 #include "GameObject.h"
@@ -18,15 +19,13 @@ public:
 	static inline Graphics _graphics;
 	static inline bool _isRunning;
 	static inline bool _isDebugMode = true;
-	static inline bool _isANewScene = true;
-	static inline std::vector<Scene*> _scenes;
+	static inline std::vector<Scene*> _scenes; //shared_ptr or unique_ptr
 	static inline Scene* _currentScene;
 
+	static void LoadLevel(Scene* levelToBeLoaded);
 	static void UpdateLevels();
 
 	static void Init();
 	static void Run();
 	static void Quit();
-
-
 };

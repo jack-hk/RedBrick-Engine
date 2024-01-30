@@ -3,7 +3,7 @@
 Level::Level(const char* sceneName)
 {
 	_sceneName = sceneName;
-	Create();
+	Game::_scenes.push_back(this);
 }
 
 void Level::Update()

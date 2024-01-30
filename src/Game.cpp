@@ -1,17 +1,19 @@
 #include "Game.h"
 #include "Scene.h"
-#include "Level.h"
+#include "LevelCreator.h"
+#include "MenuCreator.h"
 #include "Menu.h"
+
+void Game::LoadLevel(Scene* levelToBeLoaded)
+{
+	std::cout << "RedBrick: Scene Loaded '" << levelToBeLoaded->GetName() << "'" << std::endl;
+	_currentScene = levelToBeLoaded;
+}
 
 void Game::UpdateLevels()
 {
 	for (auto scene : _scenes)
 	{
-		if (_isANewScene)
-		{
-			_currentScene->OnLoaded();
-			_isANewScene = false;
-		}
 		_currentScene->Update();
 	}
 }
@@ -25,6 +27,7 @@ void Game::Init()
 	std::cout << "SDL" << ": Sucessfully initialised" << std::endl;
 }
 
+//debug
 int BoxCollider::static_number_ = 0;
 
 void Game::Run()
@@ -33,6 +36,14 @@ void Game::Run()
 
 	SDL_Texture* placeholder = Graphics::LoadTexture("img/plain_metal.png");
 
+	Creator* _sceneFactory = new MenuCreator();
+	Game::LoadLevel(_sceneFactory->FactoryMethod("Hi"));
+	delete _sceneFactory;
+
+	std::cout << Game::_scenes.size() << std::endl;
+	std::cout << Game::_currentScene->GetName() << std::endl;
+
+	/*
 	Level mainMenu("MainMenu");
 
 	GameObject go1(Vector2D(150, 100), 150);
@@ -44,7 +55,7 @@ void Game::Run()
 	mainMenu.AddGameObject(&go1);
 
 	subject->CreateMessage("Hello World! :D");
-
+	*/
 	while (Game::_isRunning)
 	{
 		Input::Update();
